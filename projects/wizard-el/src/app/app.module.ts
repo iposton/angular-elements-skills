@@ -21,9 +21,7 @@ import {createCustomElement} from '@angular/elements';
     HttpClientModule
   ],
   entryComponents: [AppComponent,
-    WizardComponent],
-  providers: [],
-  bootstrap: [AppComponent]
+    WizardComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}
@@ -34,6 +32,6 @@ export class AppModule {
     customElements.define('my-own-element', el);
     const el2 = createCustomElement(WizardComponent, 
                                  { injector: this.injector });
-    customElements.define('wizard', el2);
+    customElements.define('app-wizard', el2);
   }
  }
