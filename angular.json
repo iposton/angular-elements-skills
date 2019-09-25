@@ -125,8 +125,8 @@
       }
     },
     "elements": {
-      "root": "projects/elements/",
-      "sourceRoot": "projects/elements/src",
+      "root": "projects/wizard-el/",
+      "sourceRoot": "projects/wizard-el/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -135,16 +135,16 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/elements",
-            "index": "projects/elements/src/index.html",
-            "main": "projects/elements/src/main.ts",
-            "polyfills": "projects/elements/src/polyfills.ts",
-            "tsConfig": "projects/elements/tsconfig.app.json",
+            "index": "projects/wizard-el/src/index.html",
+            "main": "projects/wizard-el/src/main.ts",
+            "polyfills": "projects/wizard-el/src/polyfills.ts",
+            "tsConfig": "projects/wizard-el/tsconfig.app.json",
             "assets": [
-              "projects/elements/src/favicon.ico",
-              "projects/elements/src/assets"
+              "projects/wizard-el/src/favicon.ico",
+              "projects/wizard-el/src/assets"
             ],
             "styles": [
-              "projects/elements/src/styles.css"
+              "projects/wizard-el/src/styles.css"
             ],
             "scripts": [{
               "input": "node_modules/document-register-element/build/document-register-element.js"
@@ -154,8 +154,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/elements/src/environments/environment.ts",
-                  "with": "projects/elements/src/environments/environment.prod.ts"
+                  "replace": "projects/wizard-el/src/environments/environment.ts",
+                  "with": "projects/wizard-el/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -197,17 +197,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/elements/src/test.ts",
-            "polyfills": "projects/elements/src/polyfills.ts",
-            "tsConfig": "projects/elements/tsconfig.spec.json",
-            "karmaConfig": "projects/elements/karma.conf.js",
+            "main": "projects/wizard-el/src/test.ts",
+            "polyfills": "projects/wizard-el/src/polyfills.ts",
+            "tsConfig": "projects/wizard-el/tsconfig.spec.json",
+            "karmaConfig": "projects/wizard-el/karma.conf.js",
             "styles": [
-              "projects/elements/src/styles.css"
+              "projects/wizard-el/src/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "projects/elements/src/favicon.ico",
-              "projects/elements/src/assets"
+              "projects/wizard-el/src/favicon.ico",
+              "projects/wizard-el/src/assets"
             ]
           }
         },
@@ -215,12 +215,125 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/elements/tsconfig.app.json",
-              "projects/elements/tsconfig.spec.json"
+              "projects/wizard-el/tsconfig.app.json",
+              "projects/wizard-el/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        }
+      }
+    },
+    "wizard-el": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/wizard-el",
+      "sourceRoot": "projects/wizard-el/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/wizard-el",
+            "index": "projects/wizard-el/src/index.html",
+            "main": "projects/wizard-el/src/main.ts",
+            "polyfills": "projects/wizard-el/src/polyfills.ts",
+            "tsConfig": "projects/wizard-el/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/wizard-el/src/favicon.ico",
+              "projects/wizard-el/src/assets"
+            ],
+            "styles": [
+              "projects/wizard-el/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/wizard-el/src/environments/environment.ts",
+                  "with": "projects/wizard-el/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "wizard-el:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "wizard-el:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "wizard-el:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/wizard-el/src/test.ts",
+            "polyfills": "projects/wizard-el/src/polyfills.ts",
+            "tsConfig": "projects/wizard-el/tsconfig.spec.json",
+            "karmaConfig": "projects/wizard-el/karma.conf.js",
+            "assets": [
+              "projects/wizard-el/src/favicon.ico",
+              "projects/wizard-el/src/assets"
+            ],
+            "styles": [
+              "projects/wizard-el/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/wizard-el/tsconfig.app.json",
+              "projects/wizard-el/tsconfig.spec.json",
+              "projects/wizard-el/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/wizard-el/e2e/protractor.conf.js",
+            "devServerTarget": "wizard-el:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "wizard-el:serve:production"
+            }
           }
         }
       }
